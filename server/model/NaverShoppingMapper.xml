@@ -9,9 +9,11 @@
     , DATE_FORMAT(insertDate , '%Y-%m-%d %H:%i:%S' ) as insertDate
     , DATE_FORMAT(updateDate , '%Y-%m-%d %H:%i:%S' ) as updateDate
     FROM react.product_naver
-    <!-- <if test='categoryOne != null and categoryOne != ""'>
-      where category1  like concat('%',#{categoryOne} , '%')
-    </if> -->
+  </select>
+  <select id="groupby">
+    SELECT category1, SUM(buyCount)
+    FROM react.product_naver
+    GROUP BY category1 
   </select>
   <insert id="purchasing" >
     INSERT into react.product_naver(
