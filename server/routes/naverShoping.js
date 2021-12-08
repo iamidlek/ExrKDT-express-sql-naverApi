@@ -12,8 +12,7 @@ router.use(express.json());
 router.post("/", (req, res, next) => {
   const type = req.query.type;
   if ("log" === type) {
-    // 구매 목록 조회
-    // ?type=log
+    // 구매 목록 전체 조회
     const dbconnect_Module = require("./dbconnect_module");
 
     // mybaits
@@ -31,6 +30,17 @@ router.post("/", (req, res, next) => {
     req.body.mapper = "NaverShoppingMapper";
     req.body.crud = "insert";
     req.body.mapper_id = "purchasing";
+
+    router.use("/", dbconnect_Module);
+    next("route");
+  } else if ("groupby" === type) {
+    // 통계
+    const dbconnect_Module = require("./dbconnect_module");
+
+    // mybaits
+    req.body.mapper = "NaverShoppingMapper";
+    req.body.crud = "select";
+    req.body.mapper_id = "groupby";
 
     router.use("/", dbconnect_Module);
     next("route");
