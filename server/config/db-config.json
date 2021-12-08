@@ -1,0 +1,9 @@
+{
+  "connectionLimit": 2,
+  "waitForConnections": true,
+  "host": "",
+  "port": "3306",
+  "database": "",
+  "user": "admin",
+  "password": ""
+}
