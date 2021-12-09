@@ -1,13 +1,17 @@
 import axios from "axios";
 
 // 상품 검색
-export const searchProduct = async (requestInfo) => {
+export const searchProduct = async ({ query, page = 1 }) => {
   // response로 받을 경우의 코드
   // const {
   //   data: { body },
   // } = await axios.post("/naver/api?type=shoplist", requestInfo);
   // return await JSON.parse(body);
-  const { data } = await axios.post("/naver/api?type=shoplist", requestInfo);
+  const start = 10 * (page - 1) + 1;
+  const { data } = await axios.post("/naver/api?type=shoplist", {
+    query,
+    start,
+  });
   return data;
 };
 
@@ -42,11 +46,11 @@ export const purchaseItem = async (item) => {
 };
 
 // DB groupby data
-export const getChartData = async () => {
+export const getChartData = async (dateInfo) => {
   try {
     const {
       data: { json },
-    } = await axios.post("/naver/shop?type=groupby");
+    } = await axios.post("/naver/shop?type=groupby", { dateInfo });
     return json;
   } catch (error) {
     console.log(error);
