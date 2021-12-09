@@ -13,6 +13,9 @@
   <select id="groupby">
     SELECT category1, SUM(buyCount)
     FROM react.product_naver
+    <if test='dateInfo != null and dateInfo != ""'>
+      WHERE DATE_FORMAT(insertDate,'%Y-%m') = #{dateInfo}
+    </if>
     GROUP BY category1 
   </select>
   <insert id="purchasing" >
