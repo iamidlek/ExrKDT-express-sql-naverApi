@@ -26,11 +26,10 @@ router.post("/", (req, res) => {
       },
       function (error, response, body) {
         // console.log(response.statusCode); // 모든 정보중 추출
-        // console.log(response); // 모든 정보중 추출
-        // if (error) {
-        //   return console.error('upload failed:', err);
-        // }
-
+        // console.log(response);
+        if (error) {
+          return console.error("requset failed:", err);
+        }
         res.send(body);
       }
     );
@@ -47,7 +46,9 @@ router.post("/", (req, res) => {
         // console.log(response.statusCode);
         // console.log("r", response); // 통신 정보 전부
         // console.log("b", body); // 받을 정보만
-
+        if (error) {
+          return console.error("requset failed:", err);
+        }
         res.send(body);
       }
     );
