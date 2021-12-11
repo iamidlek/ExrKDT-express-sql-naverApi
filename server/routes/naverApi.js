@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 
+// router.use 미들웨어 제공
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(express.json());
 
