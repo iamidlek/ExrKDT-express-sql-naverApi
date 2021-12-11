@@ -24,11 +24,11 @@ export const recommendedKeyword = async (query) => {
 };
 
 // DB 조회
-export const getPurchaseList = async () => {
+export const getPurchaseList = async ({ dateInfo, choosedCategory = "" }) => {
   try {
     const {
       data: { json },
-    } = await axios.post("/naver/shop?type=log");
+    } = await axios.post("/naver/shop?type=log", { dateInfo, choosedCategory });
     return json;
   } catch (error) {
     console.log(error);
@@ -39,14 +39,14 @@ export const getPurchaseList = async () => {
 export const purchaseItem = async (item) => {
   try {
     const { data } = await axios.post("/naver/shop?type=purchase", { item });
-    return data; // type of String 예상
+    return data; // type of String 예상 return은 그냥 확인용 사용 안함
   } catch (error) {
     console.log(error);
   }
 };
 
 // DB groupby data
-export const getChartData = async (dateInfo) => {
+export const getChartData = async ({ dateInfo }) => {
   try {
     const {
       data: { json },
@@ -54,5 +54,6 @@ export const getChartData = async (dateInfo) => {
     return json;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
