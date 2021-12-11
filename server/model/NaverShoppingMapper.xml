@@ -9,6 +9,13 @@
     , DATE_FORMAT(insertDate , '%Y-%m-%d %H:%i:%S' ) as insertDate
     , DATE_FORMAT(updateDate , '%Y-%m-%d %H:%i:%S' ) as updateDate
     FROM react.product_naver
+    WHERE buyCount >= 1
+    <if test='dateInfo != null and dateInfo != ""'>
+      AND DATE_FORMAT(insertDate,'%Y-%m') = #{dateInfo}
+    </if>
+    <if test='choosedCategory != null and choosedCategory != ""'>
+      AND category1 = #{choosedCategory}
+    </if>
   </select>
   <select id="groupby">
     SELECT category1, SUM(buyCount)
