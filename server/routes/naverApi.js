@@ -46,9 +46,10 @@ router.post("/", (req, res) => {
         // console.log(response.statusCode);
         // console.log("r", response); // 통신 정보 전부
         // console.log("b", body); // 받을 정보만
-        if (error) {
-          return console.error("requset failed:", err);
-        }
+        // if (error) {
+        //   res.status(500).send('Something broke!');
+        //   return console.error("requset failed:", err);
+        // }
         res.send(body);
       }
     );
