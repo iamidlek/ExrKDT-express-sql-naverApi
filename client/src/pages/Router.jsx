@@ -18,6 +18,7 @@ const Router = () => {
       <Tabs value={value} onChange={handleChange}>
         <Tab label="Product" onClick={() => navigate("/")} />
         <Tab label="Chart" onClick={() => navigate("/chart")} />
+        <Tab label="Map" onClick={() => navigate("/map")} />
       </Tabs>
     </Box>
   );

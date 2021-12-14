@@ -20,26 +20,28 @@ export const ChartTable = ({ logList }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {logList.map((log) => (
-            <TableRow
-              key={log.productId}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <img
-                  src={log.image}
-                  style={{ width: "32px", height: "32px" }}
-                  alt="thumbnail"
-                />
-              </TableCell>
-              <TableCell align="center">{log.title}</TableCell>
-              <TableCell align="center">{log.category1}</TableCell>
-              <TableCell align="center">{log.buyCount}</TableCell>
-              <TableCell align="right">
-                {log.updateDate ? log.updateDate : log.insertDate}
-              </TableCell>
-            </TableRow>
-          ))}
+          {logList
+            ? logList.map((log) => (
+                <TableRow
+                  key={log.productId}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    <img
+                      src={log.image}
+                      style={{ width: "32px", height: "32px" }}
+                      alt="thumbnail"
+                    />
+                  </TableCell>
+                  <TableCell align="center">{log.title}</TableCell>
+                  <TableCell align="center">{log.category1}</TableCell>
+                  <TableCell align="center">{log.buyCount}</TableCell>
+                  <TableCell align="right">
+                    {log.updateDate ? log.updateDate : log.insertDate}
+                  </TableCell>
+                </TableRow>
+              ))
+            : "no data"}
         </TableBody>
       </Table>
     </TableContainer>

@@ -29,7 +29,9 @@ const Chart = () => {
   const selectCategory = async (choosedCategory) => {
     const dateInfo = date.toISOString().slice(0, 7);
     const list = await getPurchaseList({ dateInfo, choosedCategory });
-    list.sort((a, b) => sorting(a, b));
+    if (list) {
+      list.sort((a, b) => sorting(a, b));
+    }
     setLogList(list);
   };
   useEffect(() => {
@@ -38,7 +40,9 @@ const Chart = () => {
       const dateInfo = date.toISOString().slice(0, 7);
       const data = await getChartData({ dateInfo });
       const list = await getPurchaseList({ dateInfo });
-      list.sort((a, b) => sorting(a, b));
+      if (list) {
+        list.sort((a, b) => sorting(a, b));
+      }
       setStatistics(data);
       setLogList(list);
     }
